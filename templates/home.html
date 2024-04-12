@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Wiki to PDF</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' lineicons.com *.lineicons.com"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}" type="application/json"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon128.png') }}"/>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <!--Author: Arnav Dandekar-->
+</head>
+<body>
+    <nav>
+        <a href="">Wikiscraper</a>
+        <a href=""><i class="lni lni-github-original"></i></a>
+    </nav>
+    <div>
+        <p>Generate beautifully formatted PDFs of Wikipedia articles with a single click.</p>
+    </div>
+<form action="/download" method="post">
+    <fieldset>
+    <legend>Font Type</legend>
+
+    <input type="radio" id="serif" name="font_style" value="Times-Roman" checked/>
+    <label class="serif" for="serif">Serif</label>
+
+    <input type="radio" id="sans" name="font_style" value="Helvetica"/>
+    <label class="sans" for="sans">Sans-serif</label>
+
+    <input type="radio" id="mono" name="font_style" value="Courier"/>
+    <label class="mono" for="mono">Monospace</label>
+
+    </fieldset>
+    <fieldset>
+        <legend>Theme</legend>
+    
+        <input type="radio" id="default" name="theme" value="default" checked/>
+        <label class="default theme_option" for="default">Default</label>
+    
+        <input type="radio" id="dark" name="theme" value="dark"/>
+        <label class="dark theme_option" for="dark">Dark</label>
+    
+        <input type="radio" id="parch" name="theme" value="parch"/>
+        <label class="parch theme_option" for="parch">Parchment</label>
+    
+        </fieldset>
+    <input type="text" placeholder="Search for something" name="query" maxlength="32"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+    "name": "Wikiscraper",
+    "short_name": "Wikiscraper",
+    "version": "2",
+    "description": "Name subject to change",
+    "lang": "en-GB",
+    "start_url": ".",
+    "id" : "./",
+    "scope": "./",
+    "theme_color": "#6B003C",
+    "background_color": "#6B003C",
+    "display_override": ["fullscreen", "minimal-ui"],
+    "display": "standalone",
+    "icons": [
+        {
+          "src": "./images/favicon.png",
+          "sizes": "750x750",
+          "purpose": "any"
+        },
+        {
+          "src": "./images/favicon.png",
+          "sizes": "750x750",
+          "purpose": "maskable"
+        }
+      ],
+    "screenshots": [
+        {
+        "src": "./images/ss0.png",
+         "sizes": "1082x2402",
+         "type": "image/png",
+         "form_factor": "narrow",
+         "label": "Screenshot"
+       },
+       {
+         "src": "./images/ss1.png",
+          "sizes": "1082x2402",
+          "type": "image/png",
+          "form_factor": "narrow",
+          "label": "Screenshot"
+        },
+        {
+         "src": "./images/ss2.png",
+          "sizes": "1562x869",
+          "type": "image/png",
+          "form_factor": "wide",
+          "label": "Screenshot"
+        },
+        {
+          "src": "./images/ss3.png",
+           "sizes": "1562x869",
+           "type": "image/png",
+           "form_factor": "wide",
+           "label": "Screenshot"
+         }
+    ]
+}
