@@ -43,4 +43,4 @@ def delete_file_later(path, delay):
     thread.start()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
