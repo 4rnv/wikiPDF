@@ -23,11 +23,12 @@ def userquery():
     filename = f"{timestamp}.pdf"
     if content==False:
         return 'No such Wikipedia page exists.'
-    save_content_to_pdf(content, content_title, f"./pdf/{filename}", font_style, page_theme)
-    pdf_folder = os.path.join(app.root_path, 'pdf')
-    if not os.path.exists(pdf_folder):
+    save_content_to_pdf(content, content_title, f"./static/{filename}", font_style, page_theme)
+    pdf_folder = 'static'
+    if not pdf_folder:
         os.makedirs(pdf_folder)
-    file_path = os.path.join(pdf_folder, filename)
+    file_path = os.path.join(app.root_path, 'static', filename)
+    print(file_path)
     delete_file_later(file_path, 300)
     returning = make_response(send_from_directory(directory=pdf_folder, path=filename, as_attachment=False))
     returning.headers['Content-Type'] = 'application/pdf'
@@ -43,4 +44,4 @@ def delete_file_later(path, delay):
     thread.start()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
