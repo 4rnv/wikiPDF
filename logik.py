@@ -30,16 +30,16 @@ def save_content_to_pdf(text, title, font_style, page_theme):
     margin = 32
     y_position = height - margin
     if font_style == 'Times-Roman':
-        wrap_width = 116
+        wrap_width = 108
     elif font_style == 'Helvetica':
-        wrap_width = 104
+        wrap_width = 100
     elif font_style == 'Courier':
         wrap_width = 84
 
     c.setTitle(title)
     c.setAuthor('Kaname/1.0')
 
-    line_height = font_size * 1.5 # Initialize Y position and line height
+    line_height = font_size * 2 # Initialize Y position and line height
 
     if page_theme == 'parch':
         c.setFillColorRGB(0.96, 0.90, 0.71)
@@ -86,7 +86,7 @@ def save_content_to_pdf(text, title, font_style, page_theme):
             c.drawString(margin, y_position, line)
             y_position -= line_height  # Move to the next line
 
-        y_position -= line_height * 0.8
+        y_position -= line_height * 0.4
 
     c.save()
 
