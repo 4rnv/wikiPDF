@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, send_from_directory, make_response
+from flask import Flask, render_template, request, send_from_directory, make_response, send_file
 from logik import get_wiki_content, get_wiki_content_title, save_content_to_pdf
+from io import BytesIO
 import threading
 import time
 import os
@@ -17,23 +18,23 @@ def userquery():
     page_theme = request.form['theme'].strip()
     if len(query) > 32:
         return 'Your search is too long.'
+
     content = get_wiki_content(query)
     content_title = get_wiki_content_title(query)
-    timestamp = int(time.time()*1000000)
-    filename = f"{timestamp}.pdf"
-    if content==False:
+
+    if content == False:
         return 'No such Wikipedia page exists.'
-    save_content_to_pdf(content, content_title, f"./static/{filename}", font_style, page_theme)
-    pdf_folder = 'static'
-    if not pdf_folder:
-        os.makedirs(pdf_folder)
-    file_path = os.path.join(app.root_path, 'static', filename)
-    print(file_path)
-    delete_file_later(file_path, 300)
-    returning = make_response(send_from_directory(directory=pdf_folder, path=filename, as_attachment=False))
-    returning.headers['Content-Type'] = 'application/pdf'
-    returning.headers['Content-Disposition'] = f'inline; filename={filename}'
-    return returning
+
+    # Generate the PDF content in-memory
+    timestamp = str(int(time.time()*1000000))
+    filename = query+timestamp
+    pdf_bytes = save_content_to_pdf(content, content_title, font_style, page_theme)
+
+    # Create a BytesIO object to store the PDF content
+    pdf_stream = BytesIO(pdf_bytes)
+
+    # Send the PDF file directly to the user
+    return send_file(pdf_stream, download_name=f"{filename}.pdf", as_attachment=True)
 
 def delete_file_later(path, delay):
     def delete():
@@ -44,4 +45,4 @@ def delete_file_later(path, delay):
     thread.start()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
