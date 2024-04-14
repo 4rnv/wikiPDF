@@ -19,7 +19,7 @@ def get_wiki_content_title(page_title):
     return page_py.title.upper()
 
 def save_content_to_pdf(text, title, font_style, page_theme):
-    # Create a BytesIO object to store the PDF content
+    # Create a byte object for streaming
     pdf_bytesio = BytesIO()
 
     c = canvas.Canvas(pdf_bytesio, pagesize=letter)

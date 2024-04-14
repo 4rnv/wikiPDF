@@ -1,9 +1,7 @@
-from flask import Flask, render_template, request, send_from_directory, make_response, send_file
+from flask import Flask, render_template, request, send_file
 from logik import get_wiki_content, get_wiki_content_title, save_content_to_pdf
 from io import BytesIO
-import threading
 import time
-import os
 
 app = Flask(__name__)
 
@@ -25,24 +23,11 @@ def userquery():
     if content == False:
         return 'No such Wikipedia page exists.'
 
-    # Generate the PDF content in-memory
     timestamp = str(int(time.time()*1000000))
     filename = query+timestamp
     pdf_bytes = save_content_to_pdf(content, content_title, font_style, page_theme)
-
-    # Create a BytesIO object to store the PDF content
     pdf_stream = BytesIO(pdf_bytes)
-
-    # Send the PDF file directly to the user
     return send_file(pdf_stream, download_name=f"{filename}.pdf", as_attachment=True)
-
-def delete_file_later(path, delay):
-    def delete():
-        time.sleep(delay) # Keep file on server for some time
-        os.remove(path)
-
-    thread = threading.Thread(target=delete)
-    thread.start()
 
 if __name__ == '__main__':
     app.run()
