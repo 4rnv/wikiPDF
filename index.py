@@ -24,7 +24,7 @@ def userquery():
         return 'No such Wikipedia page exists.'
 
     timestamp = str(int(time.time()*1000000))
-    filename = query+timestamp
+    filename = query + '_' + timestamp
     pdf_bytes = save_content_to_pdf(content, content_title, font_style, page_theme)
     pdf_stream = BytesIO(pdf_bytes)
     return send_file(pdf_stream, download_name=f"{filename}.pdf", as_attachment=True)
