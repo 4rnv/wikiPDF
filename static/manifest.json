@@ -1,6 +1,6 @@
 {
-    "name": "Wikiscraper",
-    "short_name": "Wikiscraper",
+    "name": "WikiPDF",
+    "short_name": "WikiPDF",
     "version": "2",
     "description": "Generate beautifully formatted text PDFs of Wikipedia articles with a single click.",
     "lang": "en-GB",

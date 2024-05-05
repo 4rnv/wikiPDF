@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Wiki to PDF</title>
+    <title>WikiPDF</title>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' lineicons.com *.lineicons.com"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}" type="application/json"/>
@@ -13,8 +13,8 @@
 </head>
 <body>
     <nav>
-        <a href="">Wikiscraper</a>
-        <a href="https://github.com/4rnv/wikiscraper"><i class="lni lni-github-original"></i></a>
+        <a href="">WikiPDF</a>
+        <a href="https://github.com/4rnv/wikiPDF" target="_blank"><i class="lni lni-github-original"></i></a>
     </nav>
     <div>
         <p>Generate beautifully formatted PDFs of Wikipedia articles with a single click.</p>
@@ -46,7 +46,8 @@
         <label class="parch theme_option" for="parch">Parchment</label>
     
         </fieldset>
-    <input type="text" placeholder="Search for something" name="query" maxlength="32"/>
+    <input type="text" placeholder="Search for something" name="query" maxlength="32" required/>
+    <button type="submit">Generate</button>
 </form>
 </body>
 </html>
